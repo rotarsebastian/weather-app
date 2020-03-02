@@ -1,3 +1,66 @@
+@font-face {
+    font-family: 'weathericons';
+    src: url('../../assets/fonts/weather_font/weathericons-regular-webfont.eot');
+    src: url('../../assets/fonts/weather_font/weathericons-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../../assets/fonts/weather_font/weathericons-regular-webfont.woff2') format('woff2'), url('../../assets/fonts/weather_font/weathericons-regular-webfont.woff') format('woff'), url('../../assets/fonts/weather_font/weathericons-regular-webfont.ttf') format('truetype'), url('../../assets/fonts/weather_font/weathericons-regular-webfont.svg#weather_iconsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.wi {
+    display: inline-block;
+    font-family: 'weathericons';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.wi-fw {
+    text-align: center;
+    width: 1.4em;
+}
+.wi-day-sunny:before {
+    content: "\f00d";
+}
+.wi-night-clear:before {
+    content: "\f02e";
+}
+.wi-rain:before {
+    content: "\f019";
+}
+.wi-snow:before {
+    content: "\f01b";
+}
+.wi-sleet:before {
+    content: "\f0b5";
+}
+.wi-strong-wind:before {
+    content: "\f050";
+}
+.wi-fog:before {
+    content: "\f014";
+}
+.wi-cloudy:before {
+    content: "\f013";
+}
+.wi-day-cloudy:before {
+    content: "\f002";
+}
+.wi-night-partly-cloudy:before {
+    content: "\f083";
+}
+.wi-hail:before {
+    content: "\f015";
+}
+.wi-thunderstorm:before {
+    content: "\f01e";
+}
+.wi-tornado:before {
+    content: "\f056";
+}
+.wi-cloud:before {
+    content: "\f041";
+}
+  
 .mapContainer {
     width: 100%;
     height: 90.3vh;
@@ -33,7 +96,7 @@
     font-size: .85rem;
     background: transparent;
     box-shadow: none;
-    bottom: -40px;
+    bottom: -5px;
     padding-left: 0.2rem;
 }
 
