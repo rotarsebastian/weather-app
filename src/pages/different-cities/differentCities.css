@@ -2,7 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px 0;
+    padding-top: 15px;
+}
+
+.result-are-open {
+    border-color: transparent !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important; 
+    box-shadow: -3px -2px 6px 0 rgba(32,33,36,0.28) !important;
 }
 
 .search-bar {
@@ -19,7 +26,6 @@
     border-radius: 24px;
     outline: none;
     border: 1px solid #544f4f75;
-    margin-left: .25rem;
     font-size: 13px;
     padding-left: .65rem;
     position: relative;
@@ -33,7 +39,9 @@
 }
 
 #results {
-    padding: 1vh 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .search-button{

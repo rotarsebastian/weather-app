@@ -1,53 +1,44 @@
 import React, { Component } from 'react';
-import geocode from "../../helpers/geocode.js";
-import forecast from "../../helpers/forecast.js";
-
+import '../../assets/weather-icons/icons.css';
+import getWeatherIcon from '../../helpers/weatherIcon.js';
+import './searchResults.css';
 
 export default class SearchResults extends Component {
 
-    state = {
-        content: null,
-        prevContent: null
-    }
-
-    loadContent = (search) => {
-        if(this.state.prevContent === this.state.content && this.state.content !== null) {
-            return;
-        }
-        let html = '';
-        geocode(search, (error, citiesArray) => {
-            if (error) {
-                return console.log('Geocode error:', error);
-            } else {
-                citiesArray.forEach(city => {
-                    forecast(city.coordinates[1], city.coordinates[0], (errorForecast, weather) => {
-                        if (errorForecast) {
-                            return console.log('Forecast error:', errorForecast);
-                        } else {
-                            city.temperature = Math.round(weather.temperature) + '°C';
-                            city.weatherIcon = weather.icon;
-                            html += `<div>${city.location}</div>`;
-                            const prevContent = this.state.content;
-                            this.setState({content: html, prevContent})
-                        }
-                    });
-                });
-            }
-        }); 
-    }
-
     render() {
-        console.log(this.state)
         const { search } = this.props;
-        if(search && search.length > 0) {
-            this.loadContent(search);
-        }
-        return (
-            <div className="search-container">
-                <div className="search-results">
-                    {this.state.content}
+
+        if (search && search.length > 0) {
+            return (
+                <div className="search-container">
+                    <div className="search-results">
+                        {search.map((city, index) => {
+                            const { location, temperature, weatherIcon } = city;
+                            const iconClassName = 'icon-box wi ' + getWeatherIcon(weatherIcon);
+                            let updatedLocation = '';
+                            if(location.split(',').length > 3) {
+                                updatedLocation = location.split(',')[0] + ', ' +  location.split(',')[location.split(',').length - 1];
+                            }
+
+                            return (
+                                <div key={index} className='result-container'>
+                                    <div className='location-name' >{updatedLocation.length > 0 ? updatedLocation : location}</div>
+                                    <div className='temperature-icon-container'>
+                                        <div className='temperature-value' >{temperature}</div>
+                                        <div className={iconClassName}></div>
+                                    </div>
+                                </div>
+                            ); 
+                        })}
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        } else {
+            return (
+                <div className="search-container"></div>
+            );
+        }
+
+       
     }
 }

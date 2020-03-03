@@ -1,0 +1,54 @@
+.result-container {
+    display: flex;
+    justify-content: space-between;
+    height: 37px;
+    align-items: center;
+    padding: 8px 15px;
+    padding-right: 8px;
+    cursor: pointer;
+    transition: .2s;
+    background-color: white;
+    pointer-events: auto;
+}
+
+.result-container:hover {
+    background-color: #eee;
+} 
+
+.temperature-icon-container {
+    display: flex;
+    justify-content: space-between;
+    width: 60px;
+}
+
+.temperature-value {
+    margin: auto;
+    letter-spacing: .75px;
+    font-size: 13px;
+    color: #544f4fd1;
+    font-weight: bold;
+}
+
+.location-name {
+    font-size: 13px;
+}
+
+.icon-box {
+    font-size: 23px;
+    margin: auto;
+    color: #f6c358;
+}
+
+.search-results {
+    pointer-events: none;
+    background: #fff;
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 4px 6px 0 rgba(32,33,36,0.28);
+    padding-bottom: 5px;
+    overflow: hidden;
+    width: 50vw;
+}
+
+div.search-results:hover {
+    background: #eee;
+}  

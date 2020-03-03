@@ -4,6 +4,7 @@ import './home.css';
 import majorCities from '../../assets/major-cities/majorCities.js';
 import forecast from "../../helpers/forecast.js";
 import getWeatherIcon from "../../helpers/weatherIcon.js";
+import "../../assets/weather-icons/icons.css";
 
 export default class Home extends Component {
 
