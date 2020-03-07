@@ -60,3 +60,21 @@
 .wi-cloud:before {
     content: "\f041";
 }
+.wi-time-2:before {
+    content: "\f08b";
+}
+.wi-humidity:before {
+    content: "\f07a";
+}
+.wi-thermometer:before {
+    content: "\f055";
+}
+.wi-celsius:before {
+    content: "\f03c";
+}
+.wi-raindrop:before {
+    content: "\f078";
+}
+.wi-direction-down:before {
+    content: "\f044";
+}

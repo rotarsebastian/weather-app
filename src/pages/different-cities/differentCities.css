@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 15px;
+    padding-top: 4rem;
 }
 
 .result-are-open {
@@ -42,16 +42,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.search-button{
-    cursor: pointer;
-    padding: 0 1.5rem;
-    color: #FF851B;
-}
-
-.search-button:hover {
-    text-decoration: underline;
 }
 
 .search-icon{
