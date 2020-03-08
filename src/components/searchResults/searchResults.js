@@ -5,13 +5,16 @@ import './searchResults.css';
 
 export default class SearchResults extends Component {
 
+    state = {
+        search: []
+    }
+
     handleChooseCity = (coordinates, location) => {
         this.props.onSelectCity(coordinates, location);            
     }
 
     render() {
-        const { search } = this.props;
-
+        const { search }  = this.props;
         if (search && search.length > 0) {
             return (
                 <div className="search-container">

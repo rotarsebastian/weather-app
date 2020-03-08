@@ -1,5 +1,5 @@
 .logo-container {
-    height: 8vmin;
+    height: 100%;
     cursor: pointer;
     width: 7%;
 }
@@ -38,6 +38,16 @@
 @media (prefers-reduced-motion: no-preference) {
     .app-logo {
         animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .logo-container {
+        width: 10%;
+    }
+    .header-bar {
+        height: 8vh;
+        padding-bottom: 0.35rem;
     }
 }
 

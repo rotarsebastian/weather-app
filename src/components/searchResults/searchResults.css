@@ -52,3 +52,9 @@
 div.search-results:hover {
     background: #eee;
 }  
+
+@media only screen and (max-width: 415px) {
+    .search-results{
+        width: 85vw;
+    }
+}

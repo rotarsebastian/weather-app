@@ -5,14 +5,15 @@ import SearchResults from "../../components/searchResults/SearchResults";
 import geocode from "../../helpers/geocode.js";
 import forecast from "../../helpers/forecast.js";
 import CityDetails from "../../components/cityDetails/CityDetails";
+import { DebounceInput } from 'react-debounce-input';
+
 
 export default class DifferentCities extends Component {
 
     constructor(props) {
         super(props);
-        this.inputElement = React.createRef();
         this.state = {
-            hasSearchedBefore: false,
+            resultsData: []
         }
     }
 
@@ -20,91 +21,64 @@ export default class DifferentCities extends Component {
         this.inputElement.current.value = '';
         this.inputElement.current.classList.remove('result-are-open');
         this.getWeather(coordinates, (weatherData) => {
-            this.setState({showCityDetails: weatherData, resultsData: undefined, currentCityDetailed: location});
+            this.setState({showCityDetails: weatherData, resultsData: [], currentCityDetailed: location});
         });
     }
 
-    handleOnInput = (event) => {
-        const { hasSearchedBefore, timer } = this.state;
-        const { value: inputValue } = event.target;
-        event.persist();
-        clearTimeout(timer);
-        if(inputValue.length < 2) {
-            this.setState({resultsData: undefined});
-            event.target.classList.remove('result-are-open');
+    handleOnInput = (inputElement) => {
+        const { value: inputValue } = inputElement;
+        if(inputValue.length === 2) {
+            this.setState({resultsData: []});
+            inputElement.classList.remove('result-are-open');
             return;
         }
-        if(!hasSearchedBefore) {
-            this.setState({ timer: setTimeout(() => this.showResults(inputValue, event.target), 400) });
-        } else {
-            this.showResults(inputValue, event.target);
-        }  
-    }
-
-    getWeather = (coordinates, cb) => {
-        forecast(coordinates[1], coordinates[0], (errorForecast, weather) => {
-            if (errorForecast) {
-                return console.log('Forecast error:', errorForecast);
+        this.loadContent(inputValue, (resultsData) => {
+            if(typeof resultsData === 'string' && resultsData.indexOf('Error') > -1 ) {
+                return;
             } else {
-                cb(weather);
-            }
-        }, 'city');
+                inputElement.classList.add('result-are-open');
+                this.setState({resultsData});
+            } 
+        });
     }
 
-    showResults = (inputValue, element) => {
-        setTimeout(() => {
-            this.loadContent(inputValue, (resultsData) => {
-                if(typeof resultsData === 'string' && resultsData.indexOf('Error') > -1 ) {
-                    console.log(resultsData);
-                    return;
-                } else {
-                    this.setState({resultsData, hasSearchedBefore: true});
-                    element.classList.add('result-are-open');
-                }
-            });   
-        }, 500);
+    getWeather = async(coordinates, cb) => {
+        const data = await forecast(coordinates[1], coordinates[0], 'city');
+        cb(data);
     }
 
-    loadContent = (search, cb) => {
+    loadContent = async(search, cb) => {
         if(search === undefined || search.length === 0)
             return;
         try {
-            geocode(search, (error, citiesArray) => {
-                if (error) {
-                    cb('geocodeError');
-                } else {
-                    let newCities = [];
-                    citiesArray.forEach(async(city, index, array) => {
-                        await forecast(city.coordinates[1], city.coordinates[0], (errorForecast, weather) => {
-                            if (errorForecast) {
-                                cb('forecastError');
-                            } else {
-                                let newCity = {...city};
-                                newCity.temperature = Math.round(weather.temperature).toString() + '°';
-                                newCity.weatherIcon = weather.icon;
-                                newCities.push(newCity);
-                                if(index === array.length - 1){
-                                    cb(newCities);
-                                }
-                            }
-                        });
-                    });
-                }
-            }); 
+            const citiesArray = await geocode(search);
+            const newCities = citiesArray.map(async(city) => {
+                const weather = await forecast(city.coordinates[1], city.coordinates[0]);
+                let newCity = {...city};
+                newCity.temperature = Math.round(weather.temperature).toString() + '°';
+                newCity.weatherIcon = weather.icon;
+                return newCity;
+            });
+            Promise.all(newCities).then((completed) => cb(completed));
         } catch (err) {
             return console.log(err);
         }
     }
 
     render() {
-        const { resultsData, showCityDetails, currentCityDetailed } = this.state;
-        
+        const { resultsData, showCityDetails, currentCityDetailed } = this.state;        
         return (
             <div>
                 <div className="search-bar-container">
                     <div className="search-bar">
                         <img className="search-icon" src={searchIcon} alt="search-icon" />
-                        <input id="search_input" ref={this.inputElement} className="search-bar-input" name="search" placeholder="Search for a city" onInput={(event) => this.handleOnInput(event)}  />
+                        <DebounceInput
+                            id="search_input"
+                            className="search-bar-input"
+                            placeholder="Search for a city" 
+                            minLength={2}
+                            debounceTimeout={300}
+                            onChange={({ target }) => this.handleOnInput(target)} />
                     </div>
                 </div>
                 <div id="results">

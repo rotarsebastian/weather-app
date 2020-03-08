@@ -15,10 +15,10 @@ export default class Header extends Component {
                     </Link>
                     <div className="navigation-bar">
                     <li>
-                        <Link to="/different-cities">Weather in different cities</Link>
+                        <Link to="/different-cities">Weather by cities</Link>
                     </li>
                     <li>
-                        <Link to="/">Weather in Europe</Link>
+                        <Link to="/">Weather map</Link>
                     </li>
                     </div>
                 </ul>

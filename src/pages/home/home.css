@@ -49,3 +49,9 @@
 .mapboxgl-popup-tip {
     display: none;
 }
+
+@media only screen and (max-width: 415px) {
+    .mapContainer {
+        height: 92vh;
+    }
+}

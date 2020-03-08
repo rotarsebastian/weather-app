@@ -27,7 +27,7 @@ export default class CityDetails extends Component {
             {
                 propertyName: 'Humidity',
                 propertyIcon: 'wi-humidity',
-                propertyValue: `${humidity * 100} %`
+                propertyValue: `${Math.floor(humidity * 100)} %`
             },
             {
                 propertyName: 'Wind speed',
@@ -55,12 +55,12 @@ export default class CityDetails extends Component {
             {
                 propertyName: 'Rain probability',
                 propertyIcon: 'wi-raindrop',
-                propertyValue: `${precipProbability * 100} %`
+                propertyValue: `${Math.floor(precipProbability * 100)} %`
             },
             {
                 propertyName: 'Sky clouds coverage',
                 propertyIcon: 'wi-cloudy',
-                propertyValue: `${cloudCover * 100} %`
+                propertyValue: `${Math.floor(cloudCover * 100)} %`
             },
         ];
 

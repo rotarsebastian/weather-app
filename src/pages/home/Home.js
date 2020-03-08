@@ -59,30 +59,25 @@ export default class Home extends Component {
     }
 
     addMarkers = (map) => {
-        majorCities.forEach(marker => {
-            forecast(marker.geometry.coordinates[1], marker.geometry.coordinates[0], (errorForecast, weather) => {
-                if (errorForecast) {
-                    return console.log('Forecast error:', errorForecast);
-                } else {
-                    // create a HTML element for each feature
-                    const el = document.createElement('div');
+        majorCities.forEach(async (marker)=> {
+            const weather = await forecast(marker.geometry.coordinates[1], marker.geometry.coordinates[0]);
+            // create a HTML element for each feature
+            const el = document.createElement('div');
                     
-                    const iconClassName = getWeatherIcon(weather.icon);
-                    el.className = 'marker wi ' + iconClassName;
+            const iconClassName = getWeatherIcon(weather.icon);
+            el.className = 'marker wi ' + iconClassName;
 
-                    // make a marker for each feature and add to the map
-                    const oneMarker = new mapboxgl.Marker(el)
-                        .setLngLat(marker.geometry.coordinates)
-                        .setPopup(new mapboxgl.Popup({closeOnClick: false, closeButton: false, anchor: 'center'})  
-                            .setHTML('<p>' + Math.round(weather.temperature) + '°C</p><h4>' + marker.properties.capital + '</h4>'))
-                        .addTo(map)
-                        .togglePopup();
-                        this.state.currentMarkers.push(oneMarker);
+            // make a marker for each feature and add to the map
+            const oneMarker = new mapboxgl.Marker(el)
+                .setLngLat(marker.geometry.coordinates)
+                .setPopup(new mapboxgl.Popup({closeOnClick: false, closeButton: false, anchor: 'center'})  
+                    .setHTML('<p>' + Math.round(weather.temperature) + '°C</p><h4>' + marker.properties.capital + '</h4>'))
+                .addTo(map)
+                .togglePopup();
+                this.state.currentMarkers.push(oneMarker);
 
-                    el.addEventListener('click', (evt) => {
-                        evt.stopPropagation();
-                    });
-                }
+            el.addEventListener('click', (evt) => {
+                evt.stopPropagation();
             });
         });
     }

@@ -52,3 +52,12 @@
     width: 15px;
     transform: translate(-50%, -50%);
 }
+
+@media only screen and (max-width: 415px) {
+    .search-bar-container {
+        padding-top: 1.5rem;
+    }
+    .search-bar-input {
+        width: 85vw;
+    }
+}

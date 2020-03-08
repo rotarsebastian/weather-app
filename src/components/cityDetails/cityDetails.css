@@ -67,3 +67,28 @@
     width: 100%;
     color: #f55e3a;
 }
+
+@media only screen and (max-width: 415px) {
+    .city-data-container {
+        flex-direction: column;
+    }
+    .city-left-container, .city-right-container {
+        width: 100%;
+    }
+    .city-details-container {
+        padding: 2.6rem 0rem;
+    }
+    .city-current-data-property-container {
+        width: 167px;
+    }
+    .city-current-data-container {
+        padding: 1vh 10%;
+    }
+    .city-name {
+        padding: 0 25px;
+        font-size: 18px;
+    }
+    .city-current-data-text {
+        font-size: 14px;
+    }
+}

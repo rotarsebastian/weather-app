@@ -1,24 +1,21 @@
-import request from 'request';
+import request from 'request-promise';
 
-const forecast = (latitude, longitude, callback, options) => {
+const forecast = async(latitude, longitude, options) => {
   const url = `https://api.darksky.net/forecast/cacc83c7974cf5198e445c762765aab9/${latitude},${longitude}?units=si&lang=en`;
 
-  request({ url, json: true }, (errorMessage, { body }) => {
-        if (errorMessage) {
-            callback('Unable to connect to weather service!', undefined);
-        } else if (body.error) {
-            callback('Unable to find location!', undefined);
-        } else {
-            if(!!options) {
-                let customWeatherObject = {};
-                customWeatherObject.currently = {...body.currently};
-                customWeatherObject.timezone = body.timezone;
-                callback(undefined, customWeatherObject);
-            } else {
-                callback(undefined, body.currently);
-            }
-        }
-  });
+  try {
+    const response = await request({ url, json: true });
+    if(!!options) {
+        let customWeatherObject = {};
+        customWeatherObject.currently = {...response.currently};
+        customWeatherObject.timezone = response.timezone;
+        return customWeatherObject;
+    } else {
+        return response.currently;
+    }
+  } catch(err) {
+    return console.log('Unable to connect to weather service!', err);
+  }
 };
 
 export default forecast;
