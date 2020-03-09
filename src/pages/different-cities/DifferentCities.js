@@ -13,31 +13,29 @@ export default class DifferentCities extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            resultsData: []
+            inputValue: '',
+            resultsData: [],
+            inputClass: 'search-bar-input'
         }
     }
 
     handleSearchCity = (coordinates, location) => {
-        this.inputElement.current.value = '';
-        this.inputElement.current.classList.remove('result-are-open');
         this.getWeather(coordinates, (weatherData) => {
-            this.setState({showCityDetails: weatherData, resultsData: [], currentCityDetailed: location});
+            this.setState({inputValue: '', showCityDetails: weatherData, resultsData: [], currentCityDetailed: location, inputClass: 'search-bar-input'});
         });
     }
 
     handleOnInput = (inputElement) => {
         const { value: inputValue } = inputElement;
-        if(inputValue.length === 2) {
-            this.setState({resultsData: []});
-            inputElement.classList.remove('result-are-open');
+        if (inputElement.value.length === 0) {
+            this.setState({resultsData: [], inputClass: 'search-bar-input'});
             return;
         }
         this.loadContent(inputValue, (resultsData) => {
             if(typeof resultsData === 'string' && resultsData.indexOf('Error') > -1 ) {
                 return;
             } else {
-                inputElement.classList.add('result-are-open');
-                this.setState({resultsData});
+                this.setState({inputValue, resultsData, inputClass: 'search-bar-input result-are-open'});
             } 
         });
     }
@@ -48,8 +46,6 @@ export default class DifferentCities extends Component {
     }
 
     loadContent = async(search, cb) => {
-        if(search === undefined || search.length === 0)
-            return;
         try {
             const citiesArray = await geocode(search);
             const newCities = citiesArray.map(async(city) => {
@@ -66,18 +62,19 @@ export default class DifferentCities extends Component {
     }
 
     render() {
-        const { resultsData, showCityDetails, currentCityDetailed } = this.state;        
+        console.log(this.state)
+        const { resultsData, showCityDetails, currentCityDetailed, inputClass, inputValue } = this.state;   
         return (
             <div>
                 <div className="search-bar-container">
                     <div className="search-bar">
                         <img className="search-icon" src={searchIcon} alt="search-icon" />
                         <DebounceInput
-                            id="search_input"
-                            className="search-bar-input"
+                            className={inputClass}
                             placeholder="Search for a city" 
                             minLength={2}
-                            debounceTimeout={300}
+                            value={inputValue}
+                            debounceTimeout={400}
                             onChange={({ target }) => this.handleOnInput(target)} />
                     </div>
                 </div>

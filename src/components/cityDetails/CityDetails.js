@@ -14,7 +14,6 @@ export default class CityDetails extends Component {
     render () {
         const { cityData, cityName } = this.props;
         const { time, icon, humidity, windSpeed, temperature, apparentTemperature, precipProbability, summary, cloudCover, pressure } = cityData.currently;
-        console.log(cityData);
         const cityTime = this.getTime(time, cityData.timezone);
         const underCityNameWeatherIcon = 'city-weather-icon wi ' + getWeatherIcon(icon);
 

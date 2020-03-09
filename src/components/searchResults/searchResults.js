@@ -5,10 +5,6 @@ import './searchResults.css';
 
 export default class SearchResults extends Component {
 
-    state = {
-        search: []
-    }
-
     handleChooseCity = (coordinates, location) => {
         this.props.onSelectCity(coordinates, location);            
     }
@@ -43,8 +39,6 @@ export default class SearchResults extends Component {
             return (
                 <div className="search-container"></div>
             );
-        }
-
-       
+        } 
     }
 }
