@@ -34,6 +34,78 @@ let cities = `[
             "capital": "Berlin",
             "country": "Germany"
         }
+        },
+        {      
+            "geometry": {        
+            "coordinates": [
+                26.1,
+                44.433333
+            ]
+            },
+            "properties": {
+            "capital": "Bucharest",
+            "country": "Romania"
+            }
+        },
+        {      
+            "geometry": {        
+            "coordinates": [
+                26.25,
+                47.633333
+            ]
+            },
+            "properties": {
+            "capital": "Suceava",
+            "country": "Romania"
+            }
+        },
+        {      
+            "geometry": {        
+                "coordinates": [
+                -3.7,
+                40.42
+                ]
+            },
+            "properties": {
+                "capital": "Madrid",
+                "country": "Spain"
+            }
+        },
+        {      
+            "geometry": {        
+                "coordinates": [
+                12.48,
+                41.89
+                ]
+            },
+            "properties": {
+                "capital": "Rome",
+                "country": "Italy"
+            }
+        },
+        {      
+            "geometry": {        
+                "coordinates": [
+                -0.13,
+                51.51
+                ]
+            },
+            "properties": {
+                "capital": "London",
+                "country": "United Kingdom"
+            }
+        },
+        {      
+            "geometry": {        
+                "coordinates": [
+                37.62,
+                55.75
+                ]
+            },
+            "properties": {
+                "capital": "Moscow",
+                "country": "Russia"
+            }
         }
 ]`;
 

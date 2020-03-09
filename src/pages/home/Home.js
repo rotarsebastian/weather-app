@@ -13,12 +13,11 @@ export default class Home extends Component {
         this.state = {
             lng: 15.0898,
             lat: 53.8755,
-            zoom: 3,
+            zoom: 3.5,
             currentMarkers: []
         };
     }
         
-
     componentDidMount() {
         mapboxgl.accessToken = 'pk.eyJ1Ijoicm90YXJzZWJhc3RpYW4iLCJhIjoiY2s2bms3MmMyMGI0cDNtcWJsODB2dW03ZCJ9.Lc1q2J-07Nm3wzWSZr6VeA';
     
@@ -37,6 +36,12 @@ export default class Home extends Component {
             map.removeLayer('country-label');
             map.removeLayer('state-label');
             map.removeLayer('settlement-label');
+            map.addControl(new mapboxgl.GeolocateControl({
+                positionOptions: {
+                    enableHighAccuracy: true
+                },
+                trackUserLocation: true
+            }));
             // add markers to map
             this.addMarkers(map);
         });
@@ -50,12 +55,13 @@ export default class Home extends Component {
         });
 
         map.on('zoom', () => {
-            if(parseInt(this.state.zoom) < 3) {
+            if(Math.round(this.state.zoom * 10) / 10 < 3.5) {
                 this.hideMarkers();
             } else {
                 this.showMarkers(map);
             }
         });
+
     }
 
     addMarkers = (map) => {
