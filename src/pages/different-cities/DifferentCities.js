@@ -62,7 +62,6 @@ export default class DifferentCities extends Component {
     }
 
     render() {
-        console.log(this.state)
         const { resultsData, showCityDetails, currentCityDetailed, inputClass, inputValue } = this.state;   
         return (
             <div>
