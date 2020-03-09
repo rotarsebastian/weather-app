@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# hiding access key
+/src/assets/accessKey.js
+
 # testing
 /coverage
 

@@ -1,69 +1,69 @@
-let cities = `[
-    {
-        "geometry": {        
-            "coordinates": [
-            12.57,
-            55.68
-            ]
-        },
-        "properties": {
-            "capital": "Copenhagen",
-            "country": "Denmark"
-        }
-        },
-        {      
-        "geometry": {        
-            "coordinates": [
-            2.35,
-            48.85
-            ]
-        },
-        "properties": {
-            "capital": "Paris",
-            "country": "France"
-        }
-        },
+let cities = [
         {
-        "geometry": {        
-            "coordinates": [
-            13.41,
-            52.52
-            ]
-        },
-        "properties": {
-            "capital": "Berlin",
-            "country": "Germany"
-        }
-        },
-        {      
             "geometry": {        
-            "coordinates": [
-                26.1,
-                44.433333
-            ]
+                "coordinates": [
+                    12.57,
+                    55.68
+                ]
             },
             "properties": {
-            "capital": "Bucharest",
-            "country": "Romania"
-            }
-        },
-        {      
-            "geometry": {        
-            "coordinates": [
-                26.25,
-                47.633333
-            ]
-            },
-            "properties": {
-            "capital": "Suceava",
-            "country": "Romania"
+                "capital": "Copenhagen",
+                "country": "Denmark"
             }
         },
         {      
             "geometry": {        
                 "coordinates": [
-                -3.7,
-                40.42
+                    2.35,
+                    48.85
+                ]
+            },
+            "properties": {
+                "capital": "Paris",
+                "country": "France"
+            }
+        },
+        {
+            "geometry": {        
+                "coordinates": [
+                    13.41,
+                    52.52
+                ]
+            },
+            "properties": {
+                "capital": "Berlin",
+                "country": "Germany"
+            }
+        },
+        {      
+            "geometry": {        
+                "coordinates": [
+                    26.1,
+                    44.433333
+                ]
+            },
+            "properties": {
+                "capital": "Bucharest",
+                "country": "Romania"
+            }
+        },
+        {      
+            "geometry": {        
+                "coordinates": [
+                    26.25,
+                    47.633333
+                ]
+            },
+            "properties": {
+                "capital": "Suceava",
+                "country": "Romania"
+            }
+        },
+        {      
+            "geometry": {        
+                "coordinates": [
+                    -3.7,
+                    40.42
                 ]
             },
             "properties": {
@@ -74,8 +74,8 @@ let cities = `[
         {      
             "geometry": {        
                 "coordinates": [
-                12.48,
-                41.89
+                    12.48,
+                    41.89
                 ]
             },
             "properties": {
@@ -86,8 +86,8 @@ let cities = `[
         {      
             "geometry": {        
                 "coordinates": [
-                -0.13,
-                51.51
+                    -0.13,
+                    51.51
                 ]
             },
             "properties": {
@@ -98,8 +98,8 @@ let cities = `[
         {      
             "geometry": {        
                 "coordinates": [
-                37.62,
-                55.75
+                    37.62,
+                    55.75
                 ]
             },
             "properties": {
@@ -110,8 +110,8 @@ let cities = `[
         {      
             "geometry": {        
                 "coordinates": [
-                -21.9,
-                64.14
+                    -21.9,
+                    64.14
                 ]
             },
             "properties": {
@@ -119,7 +119,7 @@ let cities = `[
                 "country": "Iceland"
             }
         }
-]`;
+];
 
     //     {      
     //     "geometry": {        
@@ -169,7 +169,5 @@ let cities = `[
     //         "country": "Norway"
     //     }
     //     }
-
-cities = JSON.parse(cities);
 
 export default cities;

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import mapboxgl from 'mapbox-gl';
 import './home.css';
 import majorCities from '../../assets/major-cities/majorCities.js';
+import ak from '../../assets/accessKey.js';
 import forecast from "../../helpers/forecast.js";
 import getWeatherIcon from "../../helpers/weatherIcon.js";
 import "../../assets/weather-icons/icons.css";
@@ -19,7 +20,7 @@ export default class Home extends Component {
     }
         
     componentDidMount() {
-        mapboxgl.accessToken = 'pk.eyJ1Ijoicm90YXJzZWJhc3RpYW4iLCJhIjoiY2s2bms3MmMyMGI0cDNtcWJsODB2dW03ZCJ9.Lc1q2J-07Nm3wzWSZr6VeA';
+        mapboxgl.accessToken = ak;
     
         const map = new mapboxgl.Map({
             container: this.mapContainer,
