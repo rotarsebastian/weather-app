@@ -24,24 +24,6 @@ export default class CityDetails extends Component {
                 propertyValue: cityTime
             },
             {
-                propertyName: 'Humidity',
-                propertyIcon: 'wi-humidity',
-                propertyValue: `${Math.floor(humidity * 100)} %`
-            },
-            {
-                propertyName: 'Wind speed',
-                propertyIcon: 'wi-strong-wind',
-                propertyValue: `${Math.round(windSpeed)} m/s`
-            },
-            {
-                propertyName: 'Atmospheric pressure',
-                propertyIcon: 'wi-direction-down',
-                propertyValue: `${Math.round(pressure)} mb`
-            },
-        ];
-
-        const cityPropertiesRightSide = [
-            {
                 propertyName: 'Temperature',
                 propertyIcon: 'wi-thermometer',
                 propertyValue: `${Math.round(temperature)} °C`
@@ -55,6 +37,24 @@ export default class CityDetails extends Component {
                 propertyName: 'Rain probability',
                 propertyIcon: 'wi-raindrop',
                 propertyValue: `${Math.floor(precipProbability * 100)} %`
+            }
+        ];
+
+        const cityPropertiesRightSide = [
+            {
+                propertyName: 'Humidity',
+                propertyIcon: 'wi-humidity',
+                propertyValue: `${Math.floor(humidity * 100)} %`
+            },
+            {
+                propertyName: 'Wind speed',
+                propertyIcon: 'wi-strong-wind',
+                propertyValue: `${Math.round(windSpeed)} m/s`
+            },
+            {
+                propertyName: 'Atmospheric pressure',
+                propertyIcon: 'wi-direction-down',
+                propertyValue: `${Math.round(pressure)} mb`
             },
             {
                 propertyName: 'Sky clouds coverage',

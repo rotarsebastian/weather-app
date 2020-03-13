@@ -1,4 +1,4 @@
-let cities = [
+const cities = [
     // {
     //     "geometry": {        
     //         "coordinates": [

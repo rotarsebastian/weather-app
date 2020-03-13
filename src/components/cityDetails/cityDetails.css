@@ -88,7 +88,7 @@
         padding: 0 25px;
         font-size: 18px;
     }
-    .city-current-data-text {
+    .city-current-data-text, .city-current-data-value {
         font-size: 14px;
     }
 }

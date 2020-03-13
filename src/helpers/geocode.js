@@ -10,7 +10,7 @@ const geocode = async(address) => {
         if(cities.length === 0) {
             return console.log('Unable to find location. Try another search!');
         } else {
-            let citiesArray = [];
+            const citiesArray = [];
             cities.forEach(city => {
                 citiesArray.push({ coordinates: city.center, location: city.place_name });
             });

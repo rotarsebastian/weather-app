@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './differentCities.css';
-import searchIcon  from '../../assets/searchIcon.svg';
+import searchIcon  from '../../assets/images/searchIcon.svg';
 import SearchResults from "../../components/searchResults/SearchResults";
 import geocode from "../../helpers/geocode.js";
 import forecast from "../../helpers/forecast.js";
@@ -50,7 +50,7 @@ export default class DifferentCities extends Component {
             const citiesArray = await geocode(search);
             if(citiesArray) {
                 const newCities = citiesArray.map(async(city) => {
-                    let newCity = {...city};
+                    const newCity = {...city};
                     const weather = await forecast(city.coordinates[1], city.coordinates[0]);
                     if(weather) {
                         newCity.temperature = Math.round(weather.temperature).toString() + '°';
@@ -61,7 +61,7 @@ export default class DifferentCities extends Component {
                 Promise.all(newCities).then((completed) => cb(completed));
             }
         } catch (err) {
-            return console.log(err);
+            return console.log('Content failed to load:', err);
         }
     }
 

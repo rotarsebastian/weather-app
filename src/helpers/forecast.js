@@ -7,7 +7,7 @@ const forecast = async(latitude, longitude, options) => {
   try {
     const response = await request({ url, json: true });
     if(!!options) {
-        let customWeatherObject = {};
+        const customWeatherObject = {};
         customWeatherObject.currently = {...response.currently};
         customWeatherObject.timezone = response.timezone;
         return customWeatherObject;
