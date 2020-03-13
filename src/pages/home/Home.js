@@ -8,84 +8,92 @@ import getWeatherIcon from "../../helpers/weatherIcon.js";
 import "../../assets/weather-icons/icons.css";
 
 export default class Home extends Component {
+    _isMounted = false;
 
     constructor(props) {
         super(props);
         this.state = {
-            lng: 15.0898,
-            lat: 53.8755,
+            lng: 9.8694,
+            lat: 52.3082,
             zoom: 3.5,
             currentMarkers: []
         };
     }
         
     componentDidMount() {
-        mapboxgl.accessToken = ak;
-    
-        const map = new mapboxgl.Map({
-            container: this.mapContainer,
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [this.state.lng, this.state.lat],
-            zoom: this.state.zoom,
-            attributionControl: false,
-            // interactive: false
-        });
-
-        // map.scrollZoom.disable();
-
-        map.on('load', () => {
-            map.removeLayer('country-label');
-            map.removeLayer('state-label');
-            map.removeLayer('settlement-label');
-            map.addControl(new mapboxgl.GeolocateControl({
-                positionOptions: {
-                    enableHighAccuracy: true
-                },
-                trackUserLocation: true
-            }));
-            // add markers to map
-            this.addMarkers(map);
-        });
+        this._isMounted = true;
+        if (this._isMounted) {
+            mapboxgl.accessToken = ak('map');
         
-        map.on('move', () => {
-            this.setState({
-                lng: map.getCenter().lng.toFixed(4),
-                lat: map.getCenter().lat.toFixed(4),
-                zoom: map.getZoom().toFixed(2)
+            const map = new mapboxgl.Map({
+                container: this.mapContainer,
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [this.state.lng, this.state.lat],
+                zoom: this.state.zoom,
+                attributionControl: false,
             });
-        });
 
-        map.on('zoom', () => {
-            if(Math.round(this.state.zoom * 10) / 10 < 3.5) {
-                this.hideMarkers();
-            } else {
-                this.showMarkers(map);
-            }
-        });
+            map.on('load', () => {
+                map.removeLayer('country-label');
+                map.removeLayer('state-label');
+                map.removeLayer('settlement-label');
+                map.addControl(new mapboxgl.GeolocateControl({
+                    positionOptions: {
+                        enableHighAccuracy: true
+                    },
+                    trackUserLocation: true
+                }));
+                // add markers to map
+                this.addMarkers(map);
+            });
+            
+            map.on('move', () => {
+                this.setState({
+                    lng: map.getCenter().lng.toFixed(4),
+                    lat: map.getCenter().lat.toFixed(4),
+                    zoom: map.getZoom().toFixed(2)
+                });
+            });
+    
+            map.on('zoom', () => {
+                if(Math.round(this.state.zoom * 10) / 10 < 3.5) {
+                    this.hideMarkers();
+                } else {
+                    this.showMarkers(map);
+                }
+            });
 
+        }
     }
 
     addMarkers = (map) => {
         majorCities.forEach(async (marker)=> {
             const weather = await forecast(marker.geometry.coordinates[1], marker.geometry.coordinates[0]);
+
             // create a HTML element for each feature
-            const el = document.createElement('div');
-                    
-            const iconClassName = getWeatherIcon(weather.icon);
-            el.className = 'marker wi ' + iconClassName;
+            const markerHTML = document.createElement('div');
 
-            // make a marker for each feature and add to the map
-            const oneMarker = new mapboxgl.Marker(el)
-                .setLngLat(marker.geometry.coordinates)
-                .setPopup(new mapboxgl.Popup({closeOnClick: false, closeButton: false, anchor: 'center'})  
-                    .setHTML('<p>' + Math.round(weather.temperature) + '°C</p><h4>' + marker.properties.capital + '</h4>'))
-                .addTo(map)
-                .togglePopup();
-                this.state.currentMarkers.push(oneMarker);
+            if(weather) {
+                const iconClassName = getWeatherIcon(weather.icon);
+                markerHTML.className = 'marker wi ' + iconClassName;
+    
+                // make a marker for each feature and add to the map
+                const oneMarker = new mapboxgl.Marker(markerHTML)
+                    .setLngLat(marker.geometry.coordinates)
+                    .setPopup(new mapboxgl.Popup({closeOnClick: false, closeButton: false, anchor: 'center'})  
+                        .setHTML('<p>' + Math.round(weather.temperature) + '°C</p><h4>' + marker.properties.capital + '</h4>'))
+                    .addTo(map)
+                    .togglePopup();
+                    this.state.currentMarkers.push(oneMarker);
+    
+            } else {
+                console.log('Error returning the weather');
+            }
 
-            el.addEventListener('click', (evt) => {
+            markerHTML.addEventListener('click', (evt) => {
                 evt.stopPropagation();
             });
+
         });
     }
 
@@ -105,6 +113,10 @@ export default class Home extends Component {
                 .addTo(map)
                 .togglePopup();
         });
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     render() { 

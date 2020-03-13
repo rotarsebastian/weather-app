@@ -42,20 +42,24 @@ export default class DifferentCities extends Component {
 
     getWeather = async(coordinates, cb) => {
         const data = await forecast(coordinates[1], coordinates[0], 'city');
-        cb(data);
+        return data ? cb(data) : null;
     }
 
     loadContent = async(search, cb) => {
         try {
             const citiesArray = await geocode(search);
-            const newCities = citiesArray.map(async(city) => {
-                const weather = await forecast(city.coordinates[1], city.coordinates[0]);
-                let newCity = {...city};
-                newCity.temperature = Math.round(weather.temperature).toString() + '°';
-                newCity.weatherIcon = weather.icon;
-                return newCity;
-            });
-            Promise.all(newCities).then((completed) => cb(completed));
+            if(citiesArray) {
+                const newCities = citiesArray.map(async(city) => {
+                    let newCity = {...city};
+                    const weather = await forecast(city.coordinates[1], city.coordinates[0]);
+                    if(weather) {
+                        newCity.temperature = Math.round(weather.temperature).toString() + '°';
+                        newCity.weatherIcon = weather.icon;
+                    }
+                    return newCity;
+                });
+                Promise.all(newCities).then((completed) => cb(completed));
+            }
         } catch (err) {
             return console.log(err);
         }
@@ -80,7 +84,7 @@ export default class DifferentCities extends Component {
                 <div id="results">
                     <SearchResults search={resultsData} onSelectCity={this.handleSearchCity} />
                 </div>
-                {showCityDetails ? <CityDetails cityData={showCityDetails} cityName={currentCityDetailed} /> : null}
+                {showCityDetails ? <CityDetails cityData={showCityDetails} cityName={currentCityDetailed} /> : <div className="city-details-default">Start a new search for a more detailed forecast for your city</div>}
             </div>
         );
     }

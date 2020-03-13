@@ -1,7 +1,8 @@
 import request from 'request-promise';
+import aK from '../assets/accessKey.js';
 
 const forecast = async(latitude, longitude, options) => {
-  const url = `https://api.darksky.net/forecast/cacc83c7974cf5198e445c762765aab9/${latitude},${longitude}?units=si&lang=en`;
+  const url = `https://api.darksky.net/forecast/${aK('weather')}/${latitude},${longitude}?units=si&lang=en`;
 
   try {
     const response = await request({ url, json: true });

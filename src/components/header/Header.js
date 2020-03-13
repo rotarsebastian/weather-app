@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import './header.css';
 import logo from '../../assets/logo.svg';
 
@@ -10,15 +10,15 @@ export default class Header extends Component {
         return (
               <nav>
                 <ul className="header-bar">
-                    <Link to="/" className="logo-container">
+                    <NavLink to="/" className="logo-container">
                         <img className="app-logo" src={logo} alt="logo"/>
-                    </Link>
+                    </NavLink>
                     <div className="navigation-bar">
                     <li>
-                        <Link to="/different-cities">Weather by cities</Link>
+                        <NavLink to="/map">Weather map</NavLink>
                     </li>
                     <li>
-                        <Link to="/">Weather map</Link>
+                        <NavLink to="/different-cities">Weather by cities</NavLink>
                     </li>
                     </div>
                 </ul>

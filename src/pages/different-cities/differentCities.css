@@ -53,6 +53,14 @@
     transform: translate(-50%, -50%);
 }
 
+.city-details-default {
+    text-align: center;
+    margin: 6vh 6vw;
+    color: #9e9e9e;
+    font-style: italic;
+    font-size: 16px;
+}
+
 @media only screen and (max-width: 415px) {
     .search-bar-container {
         padding-top: 1.5rem;

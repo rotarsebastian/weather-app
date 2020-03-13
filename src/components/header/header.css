@@ -30,6 +30,10 @@
     color: rgb(243, 243, 243);
     font-size: 1.05rem;
 }
+
+.navigation-bar li a.active {
+    color: #f6c358b8;
+}
   
 .navigation-bar li a:hover {
     opacity: 0.7;
