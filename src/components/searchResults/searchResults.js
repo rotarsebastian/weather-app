@@ -11,7 +11,6 @@ export default class SearchResults extends Component {
 
     render() {
         const { search }  = this.props;
-        console.log(search);
         if (search && search.length > 0) {
             return (
                 <div className="search-container">

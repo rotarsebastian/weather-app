@@ -177,7 +177,6 @@ export default class Home extends Component {
     }
 
     render() { 
-        console.log(this.state)
         const { map, zoom, currentMarkersRO } = this.state;
         if(currentMarkersRO.length > 0 && Math.round(zoom * 10) / 10 < 5.70) {
             this.hideMarkers('ro');
