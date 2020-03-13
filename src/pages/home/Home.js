@@ -6,7 +6,7 @@ import romanianCities from '../../assets/map-cities/romanianCities.js';
 import ro_flag from '../../assets/images/roFlag.svg';
 import ak from '../../assets/accessKey.js';
 import forecast from "../../helpers/forecast.js";
-import getWeatherIcon from "../../helpers/weatherIcon.js";
+import getWeatherIconMap from '../../helpers/weatherIconOpenMap';
 import "../../assets/weather-icons/icons.css";
 
 export default class Home extends Component {
@@ -78,14 +78,14 @@ export default class Home extends Component {
             const markerHTML = document.createElement('div');
 
             if(weather) {
-                const iconClassName = getWeatherIcon(weather.icon);
+                const iconClassName = getWeatherIconMap(weather.weather[0].icon);
                 markerHTML.className = 'marker wi ' + iconClassName;
     
                 // make a marker for each feature and add to the map
                 const oneMarker = new mapboxgl.Marker(markerHTML)
                     .setLngLat(marker.geometry.coordinates)
                     .setPopup(new mapboxgl.Popup({closeOnClick: false, closeButton: false, anchor: 'center'})  
-                        .setHTML('<p>' + Math.round(weather.temperature) + '°C</p><h4>' + marker.properties.capital + '</h4>'))
+                        .setHTML('<p>' + Math.round(weather.main.temp) + '°C</p><h4>' + marker.properties.capital + '</h4>'))
                     .addTo(map)
                     .togglePopup();
                     this.state.currentMarkers.push(oneMarker);
@@ -131,7 +131,7 @@ export default class Home extends Component {
     centerRomania = () => {
         const { map, currentMarkersRO } = this.state;
         if(window.screen.width < 768) {
-            map.flyTo({ center: [24.9707, 45.7570], zoom: 4.70});
+            map.flyTo({ center: [26.1550, 46.2778], zoom: 6.28});
         } else {
             map.flyTo({ center: [24.9152, 46.0655], zoom: 6.39});
         }
@@ -146,14 +146,14 @@ export default class Home extends Component {
                 const markerHTML = document.createElement('div');
     
                 if(weather) {
-                    const iconClassName = getWeatherIcon(weather.icon);
+                    const iconClassName = getWeatherIconMap(weather.weather[0].icon);
                     markerHTML.className = 'marker wi ' + iconClassName;
         
                     // make a marker for each feature and add to the map
                     const oneMarker = new mapboxgl.Marker(markerHTML)
                         .setLngLat([marker.lng, marker.lat])
                         .setPopup(new mapboxgl.Popup({closeOnClick: false, closeButton: false, anchor: 'center'})  
-                            .setHTML('<p>' + Math.round(weather.temperature) + '°C</p><h4>' + marker.city + '</h4>'))
+                            .setHTML('<p>' + Math.round(weather.main.temp) + '°C</p><h4>' + marker.city + '</h4>'))
                         .addTo(map)
                         .togglePopup();
                         this.state.currentMarkersRO.push(oneMarker);
@@ -177,8 +177,9 @@ export default class Home extends Component {
     }
 
     render() { 
+        console.log(this.state)
         const { map, zoom, currentMarkersRO } = this.state;
-        if(currentMarkersRO.length > 0 && zoom < 4.70) {
+        if(currentMarkersRO.length > 0 && Math.round(zoom * 10) / 10 < 5.70) {
             this.hideMarkers('ro');
         } else {
             this.showMarkers(map, 'ro');

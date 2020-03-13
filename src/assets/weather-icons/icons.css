@@ -78,3 +78,15 @@
 .wi-direction-down:before {
     content: "\f044";
 }
+.wi-night-alt-rain:before {
+    content: "\f028";
+}
+.wi-night-alt-cloudy:before {
+    content: "\f086";
+}
+.wi-day-showers:before {
+    content: "\f009";
+}
+.wi-night-alt-showers:before {
+    content: "\f029";
+}

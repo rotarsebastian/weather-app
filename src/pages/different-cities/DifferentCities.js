@@ -53,8 +53,8 @@ export default class DifferentCities extends Component {
                     const newCity = {...city};
                     const weather = await forecast(city.coordinates[1], city.coordinates[0]);
                     if(weather) {
-                        newCity.temperature = Math.round(weather.temperature).toString() + '°';
-                        newCity.weatherIcon = weather.icon;
+                        newCity.temperature = Math.round(weather.main.temp).toString() + '°';
+                        newCity.weatherIcon = weather.weather[0].icon;
                     }
                     return newCity;
                 });

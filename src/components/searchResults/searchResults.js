@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../assets/weather-icons/icons.css';
-import getWeatherIcon from '../../helpers/weatherIcon.js';
+import getWeatherIconMap from '../../helpers/weatherIconOpenMap';
 import './searchResults.css';
 
 export default class SearchResults extends Component {
@@ -11,13 +11,14 @@ export default class SearchResults extends Component {
 
     render() {
         const { search }  = this.props;
+        console.log(search);
         if (search && search.length > 0) {
             return (
                 <div className="search-container">
                     <div className="search-results">
                         {search.map((city, index) => {
-                            const { location, temperature, weatherIcon, coordinates } = city;
-                            const iconClassName = 'icon-box wi ' + getWeatherIcon(weatherIcon);
+                            const { location, temperature, coordinates, weatherIcon } = city;
+                            const iconClassName = 'icon-box wi ' + getWeatherIconMap(weatherIcon);
                             let updatedLocation = '';
                             if(location.split(',').length > 3) {
                                 updatedLocation = location.split(',')[0] + ', ' +  location.split(',')[location.split(',').length - 1];
