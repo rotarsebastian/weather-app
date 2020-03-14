@@ -3,8 +3,8 @@ import request from 'request-promise';
 
 const forecast = async(latitude, longitude, options) => {
   let url;
-  options ? url = `https://api.darksky.net/forecast/${process.env.REACT_APP_DARKSKY}/${latitude},${longitude}?units=si&lang=en`
-    : url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_OPEN_WEATHER}&units=metric`;
+  options ? url = `/forecast/${process.env.REACT_APP_DARKSKY}/${latitude},${longitude}?units=si&lang=en`
+    : url = `/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_OPEN_WEATHER}&units=metric`;
   try {
     //const proxyAdded = 'https://cors-anywhere.herokuapp.com/' + url;
     const response = await request({ url, json: true, method: 'GET' });

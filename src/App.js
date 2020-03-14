@@ -13,6 +13,7 @@ export default class App extends Component{
         <Header />
         <Switch>
           <Route path="/different-cities" component={(props) => <DifferentCities {...props} />} />
+          <Route path="/map" component={(props) => <Home {...props} />} />
           <Route path="/" component={(props) => <Home {...props} />} />
         </Switch>
       </div>
