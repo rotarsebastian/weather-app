@@ -11,13 +11,14 @@ const forecast = async(latitude, longitude, options) => {
     // const proxyAdded = 'https://cors-anywhere.herokuapp.com/' + url;
     const response = await axios.get(url);
     console.log(response);
+    const { data } = response;
     if(!!options) {
       const customWeatherObject = {};
-      customWeatherObject.currently = {...response.currently};
-      customWeatherObject.timezone = response.timezone;
+      customWeatherObject.currently = {...data.currently};
+      customWeatherObject.timezone = data.timezone;
       return customWeatherObject;
     } else {
-      return response;
+      return data;
     }
   } catch(err) {
     return console.log('Unable to connect to weather service!', err);
