@@ -1,12 +1,10 @@
 import request from 'request-promise';
-import aK from '../assets/accessKey.js';
+// import aK from '../assets/accessKey.js';
 
 const forecast = async(latitude, longitude, options) => {
-  // const url = `https://api.darksky.net/forecast/${aK('weather')}/${latitude},${longitude}?units=si&lang=en`;
-  // const urlOpenWeather = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${aK('open-weather')}&units=metric`;
   let url;
-  options ? url = `https://api.darksky.net/forecast/${aK('weather')}/${latitude},${longitude}?units=si&lang=en`
-    : url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${aK('open-weather')}&units=metric`;
+  options ? url = `https://api.darksky.net/forecast/${process.env.REACT_APP_DARKSKY}/${latitude},${longitude}?units=si&lang=en`
+    : url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_OPEN_WEATHER}&units=metric`;
   try {
     const proxyAdded = 'https://cors-anywhere.herokuapp.com/' + url;
     if(!!options) {

@@ -4,7 +4,7 @@ import './home.css';
 import majorCities from '../../assets/map-cities/majorCities.js';
 import romanianCities from '../../assets/map-cities/romanianCities.js';
 import ro_flag from '../../assets/images/roFlag.svg';
-import ak from '../../assets/accessKey.js';
+// import ak from '../../assets/accessKey.js';
 import forecast from "../../helpers/forecast.js";
 import getWeatherIconMap from '../../helpers/weatherIconOpenMap.js';
 import "../../assets/weather-icons/icons.css";
@@ -29,7 +29,7 @@ export default class Home extends Component {
 
             const { lng, lat, zoom, currentMarkers } = this.state;
 
-            mapboxgl.accessToken = ak('map');
+            mapboxgl.accessToken = process.env.REACT_APP_MAP;
             const map = new mapboxgl.Map({
                 container: this.mapContainer,
                 style: 'mapbox://styles/mapbox/streets-v11',
