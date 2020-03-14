@@ -11,7 +11,7 @@ const forecast = async(latitude, longitude, options) => {
     // const proxyAdded = 'https://cors-anywhere.herokuapp.com/' + url;
     const response = await axios.get(url);
     console.log(response);
-    const { data } = response;
+    const { data } = response.data;
     if(!!options) {
       const customWeatherObject = {};
       customWeatherObject.currently = {...data.currently};
