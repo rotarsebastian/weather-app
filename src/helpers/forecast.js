@@ -6,8 +6,8 @@ const forecast = async(latitude, longitude, options) => {
   options ? url = `https://api.darksky.net/forecast/${process.env.REACT_APP_DARKSKY}/${latitude},${longitude}?units=si&lang=en`
     : url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_OPEN_WEATHER}&units=metric`;
   try {
-    const proxyAdded = 'https://cors-anywhere.herokuapp.com/' + url;
-    const response = await request({ uri: proxyAdded, json: true, method: 'GET' });
+    //const proxyAdded = 'https://cors-anywhere.herokuapp.com/' + url;
+    const response = await request({ url, json: true, method: 'GET' });
     if(!!options) {
       const customWeatherObject = {};
       customWeatherObject.currently = {...response.currently};
