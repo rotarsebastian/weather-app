@@ -5,13 +5,11 @@ const forecast = async(latitude, longitude, options) => {
   // const url = `https://api.darksky.net/forecast/${aK('weather')}/${latitude},${longitude}?units=si&lang=en`;
   // const urlOpenWeather = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${aK('open-weather')}&units=metric`;
   let url;
-  if(options) {
-    url = `https://api.darksky.net/forecast/${aK('weather')}/${latitude},${longitude}?units=si&lang=en`;;
-  } else {
-    url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${aK('open-weather')}&units=metric`;
-  }
+  options ? url = `https://api.darksky.net/forecast/${aK('weather')}/${latitude},${longitude}?units=si&lang=en`
+    : url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${aK('open-weather')}&units=metric`;
   try {
-    const response = await request({ url, json: true });
+    const proxyAdded = 'https://cors-anywhere.herokuapp.com/' + url;
+    const response = await request({ uri: proxyAdded, json: true, method: 'GET' });
     if(!!options) {
       const customWeatherObject = {};
       customWeatherObject.currently = {...response.currently};
