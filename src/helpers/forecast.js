@@ -8,7 +8,7 @@ const forecast = async(latitude, longitude, options) => {
   try {
     // const proxiedRequest = request.defaults({ proxy: 'http://USER:PASSWORD@myProxy:8080' });
     //const proxyAdded = 'https://cors-anywhere.herokuapp.com/' + url;
-    const response = await request({ url, json: true, method: 'GET', headers: { 'Access-Control-Allow-Origin': '*'} });
+    const response = await request({ url, json: true, method: 'GET', headers: { 'Access-Control-Allow-Origin': 'https://weatherappwithmap.herokuapp.com/'} });
     if(!!options) {
       const customWeatherObject = {};
       customWeatherObject.currently = {...response.currently};
