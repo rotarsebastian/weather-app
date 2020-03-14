@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../assets/weather-icons/icons.css';
-import getWeatherIconMap from '../../helpers/weatherIconOpenMap';
+import getWeatherIconMap from '../../helpers/weatherIconOpenMap.js';
 import './searchResults.css';
 
 export default class SearchResults extends Component {

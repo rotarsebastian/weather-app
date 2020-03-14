@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import './differentCities.css';
 import searchIcon  from '../../assets/images/searchIcon.svg';
-import SearchResults from "../../components/searchResults/SearchResults";
+import SearchResults from "../../components/searchResults/SearchResults.js";
 import geocode from "../../helpers/geocode.js";
 import forecast from "../../helpers/forecast.js";
-import CityDetails from "../../components/cityDetails/CityDetails";
+import CityDetails from "../../components/cityDetails/CityDetails.js";
 import { DebounceInput } from 'react-debounce-input';
 
 
