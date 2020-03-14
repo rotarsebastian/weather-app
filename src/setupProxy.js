@@ -1,18 +1,18 @@
-const proxy = require("http-proxy-middleware");
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
-module.exports = function(app) {
+module.exports = app => {
   app.use(
-    proxy("/forecast", {
+    "/forecast",
+    createProxyMiddleware({
       target: "https://api.darksky.net",
-      secure: false,
       changeOrigin: true
     })
   );
 
   app.use(
-    proxy("/data/2.5/weather", {
+    "/data/2.5/weather",
+    createProxyMiddleware({
       target: "http://api.openweathermap.org",
-      secure: false,
       changeOrigin: true
     })
   );
