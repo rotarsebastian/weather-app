@@ -5,8 +5,7 @@ const geocode = async(address) => {
     const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${aK('map')}&limit=2&lang=en`;
     
     try {
-        const proxyAdded = 'https://cors-anywhere.herokuapp.com/' + url;
-        const response = await request({uri: proxyAdded, json: true, method: 'GET'});
+        const response = await request({url, json: true, method: 'GET'});
         const { features: cities } = response;
         if(cities.length === 0) {
             return console.log('Unable to find location. Try another search!');

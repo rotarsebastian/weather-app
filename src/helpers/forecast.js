@@ -9,13 +9,14 @@ const forecast = async(latitude, longitude, options) => {
     : url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${aK('open-weather')}&units=metric`;
   try {
     const proxyAdded = 'https://cors-anywhere.herokuapp.com/' + url;
-    const response = await request({ uri: proxyAdded, json: true, method: 'GET' });
     if(!!options) {
+      const response = await request({ uri: proxyAdded, json: true, method: 'GET' });
       const customWeatherObject = {};
       customWeatherObject.currently = {...response.currently};
       customWeatherObject.timezone = response.timezone;
       return customWeatherObject;
     } else {
+      const response = await request({ url, json: true, method: 'GET' });
       return response;
     }
   } catch(err) {
