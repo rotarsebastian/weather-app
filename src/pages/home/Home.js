@@ -4,7 +4,6 @@ import './home.css';
 import majorCities from '../../assets/map-cities/majorCities.js';
 import romanianCities from '../../assets/map-cities/romanianCities.js';
 import ro_flag from '../../assets/images/roFlag.svg';
-// import ak from '../../assets/accessKey.js';
 import forecast from "../../helpers/forecast.js";
 import getWeatherIconMap from '../../helpers/weatherIconOpenMap.js';
 import "../../assets/weather-icons/icons.css";
