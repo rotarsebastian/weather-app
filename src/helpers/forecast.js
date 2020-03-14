@@ -5,7 +5,6 @@ const forecast = async(latitude, longitude, options) => {
   options ? url = `${process.env.REACT_APP_FORECAST}?lat=${latitude}&long=${longitude}`
     : url = `${process.env.REACT_APP_WEATHER}?lat=${latitude}&long=${longitude}`;
   try {
-    // const proxyAdded = 'https://cors-anywhere.herokuapp.com/' + url;
     const response = JSON.parse(await request({ uri: url, json: true, method: 'GET' }));
     if(!!options) {
       const customWeatherObject = {};
