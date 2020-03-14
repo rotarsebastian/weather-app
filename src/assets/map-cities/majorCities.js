@@ -7,8 +7,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Ankara",
-            "country": "Turkey"
+            "city": "Ankara",
         }
     },
     {
@@ -19,8 +18,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Istanbul",
-            "country": "Turkey"
+            "city": "Istanbul",
         }
     },
     {
@@ -31,8 +29,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "St. Petersborg",
-            "country": "Russia"
+            "city": "St. Petersborg",
         }
     },
     {
@@ -43,8 +40,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Edinburgh",
-            "country": "Scotland"
+            "city": "Edinburgh",
         }
     },
     {
@@ -55,8 +51,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Oslo",
-            "country": "Norway"
+            "city": "Oslo",
         }
     },
     {
@@ -67,8 +62,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Riga",
-            "country": "Latvia"
+            "city": "Riga",
         }
     },
     {
@@ -79,8 +73,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Kiev",
-            "country": "Ukraine"
+            "city": "Kiev",
         }
     },
     {
@@ -91,8 +84,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Bordeaux",
-            "country": "France"
+            "city": "Bordeaux",
         }
     },
     {
@@ -103,8 +95,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Barcelona",
-            "country": "Spain"
+            "city": "Barcelona",
         }
     },
     {
@@ -115,8 +106,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Amsterdam",
-            "country": "Netherlands"
+            "city": "Amsterdam",
         }
     },
     {
@@ -127,8 +117,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Athens",
-            "country": "Greece"
+            "city": "Athens",
         }
     },
     {
@@ -139,8 +128,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Sarajevo",
-            "country": "Bosnia"
+            "city": "Sarajevo",
         }
     },
     {
@@ -151,8 +139,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Marseille",
-            "country": "France"
+            "city": "Marseille",
         }
     },
     {
@@ -163,8 +150,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Dublin",
-            "country": "Ireland"
+            "city": "Dublin",
         }
     },
     {
@@ -175,8 +161,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Warsaw",
-            "country": "Poland"
+            "city": "Warsaw",
         }
     },
     {
@@ -187,8 +172,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "München",
-            "country": "Germany"
+            "city": "München",
         }
     },
     {
@@ -199,8 +183,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Helsinki",
-            "country": "Finland"
+            "city": "Helsinki",
         }
     },
     {
@@ -211,8 +194,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Stockholm",
-            "country": "Sweden"
+            "city": "Stockholm",
         }
     },
     {
@@ -223,8 +205,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Minsk",
-            "country": "Belarus"
+            "city": "Minsk",
         }
     },
     {
@@ -235,8 +216,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Wien",
-            "country": "Austria"
+            "city": "Wien",
         }
     },
     {
@@ -247,8 +227,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Lisbon",
-            "country": "Portugal"
+            "city": "Lisbon",
         }
     },
     {
@@ -259,8 +238,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "New York",
-            "country": "US"
+            "city": "New York",
         }
     },
     {
@@ -271,8 +249,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Bangkok",
-            "country": "Thailand"
+            "city": "Bangkok",
         }
     },
     {
@@ -283,8 +260,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Copenhagen",
-            "country": "Denmark"
+            "city": "Copenhagen",
         }
     },
     {      
@@ -295,8 +271,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Paris",
-            "country": "France"
+            "city": "Paris",
         }
     },
     {
@@ -307,8 +282,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Berlin",
-            "country": "Germany"
+            "city": "Berlin",
         }
     },
     {      
@@ -319,8 +293,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Bucharest",
-            "country": "Romania"
+            "city": "Bucharest",
         }
     },
     {      
@@ -331,8 +304,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Suceava",
-            "country": "Romania"
+            "city": "Suceava",
         }
     },
     {      
@@ -343,8 +315,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Madrid",
-            "country": "Spain"
+            "city": "Madrid",
         }
     },
     {      
@@ -355,8 +326,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Rome",
-            "country": "Italy"
+            "city": "Rome",
         }
     },
     {      
@@ -367,8 +337,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "London",
-            "country": "United Kingdom"
+            "city": "London",
         }
     },
     {      
@@ -379,8 +348,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Moscow",
-            "country": "Russia"
+            "city": "Moscow",
         }
     },
     {      
@@ -391,8 +359,7 @@ const cities = [
             ]
         },
         "properties": {
-            "capital": "Reykjavík",
-            "country": "Iceland"
+            "city": "Reykjavík",
         }
     }
 ];
