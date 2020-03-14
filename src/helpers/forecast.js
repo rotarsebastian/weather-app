@@ -10,6 +10,7 @@ const forecast = async(latitude, longitude, options) => {
     // const proxiedRequest = request.defaults({ proxy: 'http://USER:PASSWORD@myProxy:8080' });
     // const proxyAdded = 'https://cors-anywhere.herokuapp.com/' + url;
     const response = await axios.get(url);
+    console.log(response);
     if(!!options) {
       const customWeatherObject = {};
       customWeatherObject.currently = {...response.currently};
