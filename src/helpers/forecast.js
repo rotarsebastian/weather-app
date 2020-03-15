@@ -20,17 +20,24 @@
 // };
 // export default forecast;
 
+// ===================== FOR DEVELOPMENT =====================
+
 import axios from 'axios';
 import aK from '../assets/accessKey';
 
 const forecast = async(latitude, longitude, options) => {
   let url;
-  options ? url = `/forecast/${aK('weather')}/${latitude},${longitude}?units=si&lang=en`
-    : url = `/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${aK('open-weather')}&units=metric`;
+  if(options && options === 'city') {
+    url = `/forecast/${aK('weather')}/${latitude},${longitude}?units=si&lang=en`;
+  } else if(options && options === 'week') {
+    url = `/data/2.5/forecast/daily?lat=${latitude}&lon=${longitude}&cnt=7&appid=${aK('open-weather')}&units=metric`;
+  } else {
+    url = `/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${aK('open-weather')}&units=metric`;
+  }
   try {
     const response = await axios.get(url);
     const { data } = response;
-    if(!!options) {
+    if(options && options === 'city') {
       const customWeatherObject = {};
       customWeatherObject.currently = {...data.currently};
       customWeatherObject.timezone = data.timezone;

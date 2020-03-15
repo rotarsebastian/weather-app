@@ -42,6 +42,9 @@ export default class DifferentCities extends Component {
 
     getWeather = async(coordinates, cb) => {
         const data = await forecast(coordinates[1], coordinates[0], 'city');
+        // ENABLE WEEKLY FORECAST - MUST BE PAID
+        // const weeklyData = await forecast(coordinates[1], coordinates[0], 'week');
+        // const mergedData = {...data, ...weeklyData}; 
         return data ? cb(data) : null;
     }
 

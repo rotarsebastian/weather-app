@@ -16,4 +16,12 @@ module.exports = app => {
       changeOrigin: true
     })
   );
+
+  app.use(
+    "/data/2.5/forecast/daily",
+    createProxyMiddleware({
+      target: "http://api.openweathermap.org",
+      changeOrigin: true
+    })
+  );
 };
