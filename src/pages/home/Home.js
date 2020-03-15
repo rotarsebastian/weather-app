@@ -7,9 +7,6 @@ import ro_flag from '../../assets/images/roFlag.svg';
 import forecast from "../../helpers/forecast.js";
 import getWeatherIconMap from '../../helpers/weatherIconOpenMap.js';
 import "../../assets/weather-icons/icons.css";
-// ===================== FOR DEVELOPMENT =====================
-import ak from '../../assets/accessKey.js';
-// ===================== END DEVELOPMENT =====================
 
 export default class Home extends Component {
     _isMounted = false;
@@ -30,14 +27,8 @@ export default class Home extends Component {
         if (this._isMounted) {
 
             const { lng, lat, zoom, currentMarkers } = this.state;
-            // ===================== FOR PRODUCTION =====================
-            // mapboxgl.accessToken = process.env.REACT_APP_MAP;
-            // ===================== END PRODUCTION =====================
 
-            // ===================== FOR DEVELOPMENT =====================
-            mapboxgl.accessToken = ak('map');
-            // ===================== END DEVELOPMENT =====================
-
+            mapboxgl.accessToken = process.env.REACT_APP_MAP;
             const map = new mapboxgl.Map({
                 container: this.mapContainer,
                 style: 'mapbox://styles/mapbox/streets-v11',
