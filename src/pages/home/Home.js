@@ -58,14 +58,6 @@ export default class Home extends Component {
                 // add markers to map
                 this.addMarkers(map, majorCities, currentMarkers);
             });
-            
-            map.on('move', () => {
-                this.setState({
-                    lng: map.getCenter().lng.toFixed(4),
-                    lat: map.getCenter().lat.toFixed(4),
-                    zoom: map.getZoom().toFixed(2)
-                });
-            });
     
             map.on('zoom', () => {
                 const { zoom, currentMarkersRO } = this.state;
